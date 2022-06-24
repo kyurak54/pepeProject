@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">pepeProject</string>
-    <string name="main_title">Let's find out\nyour love type!</string>
+    <string name="main_title">테스트를 해봅시다</string>
+    <string name="main_question">질문입력해봅시다</string>
 </resources>
