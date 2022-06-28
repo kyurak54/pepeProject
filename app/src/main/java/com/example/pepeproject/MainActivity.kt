@@ -7,7 +7,6 @@ import android.view.ViewParent
 import android.widget.AdapterView
 import android.widget.*
 import android.widget.Spinner
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,11 +22,16 @@ class MainActivity : AppCompatActivity() {
         var adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data)
         // activity_main에서 만들어 놓은 spinner에 adapter를 연결해준다.
 
-        spinner.adapter = adapter
+        var spinner: Spinner = findViewById(R.id.spinner)
+        spinner.adapter
         // 데이터가 들어가 있는 spinner에서 선택한 아이템을 가져온다.
-        spinner.onItemSelectListner = object:AdapterView.OnItemSelectedListener {
+
+        spinner.onItemSelectedListener = object:AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 // position은 선택한 아이템의 위치를 넘겨주는 인자다
+
+                var result: TextView = findViewById(R.id.result)
+
                 result.text = data.get(position)
             }
 
