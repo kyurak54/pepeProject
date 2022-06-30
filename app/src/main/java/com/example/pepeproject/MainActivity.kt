@@ -26,9 +26,6 @@ class MainActivity : AppCompatActivity() {
         binding.spinner.onItemSelectedListener=object:AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
 
-
-
-
                 if(p2 != 0) Toast.makeText(this@MainActivity, itemList[p2], Toast.LENGTH_SHORT).show()
                 if(p2 == 2) {
                     binding.textViewId.setVisibility(View.VISIBLE)

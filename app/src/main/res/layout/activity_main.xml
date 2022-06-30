@@ -21,12 +21,13 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
 
-    <TextView
+    <EditText
         android:id="@+id/textViewId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="217dp"
-        android:text="테스트"
+        android:inputType="number"
+        android:text="숫자를 입력해주세요"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
