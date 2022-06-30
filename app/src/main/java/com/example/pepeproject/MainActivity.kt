@@ -1,44 +1,47 @@
 package com.example.pepeproject
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.ViewParent
+import android.widget.ArrayAdapter
 import android.widget.AdapterView
-import android.widget.*
-import android.widget.Spinner
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.pepeproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding=ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        //Spinner에 들어갈 데이터
-        var data = listOf("-- 선택하세요 -- ", "선택 항목 1", "선택 항목 2", "선택 항목 3")
+        val itemList = listOf("----선택사항------", "선택 1번", "선택 2번", "선택 3번")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, itemList)
+        binding.spinner.adapter = adapter
 
-        // 데이터와 스피터를 연결 시켜줄 adapter를 만들어 준다.
-        // ArrayAdapter의 두번째 인자는 스피너 목록에 아이템을 그려줄 레이아웃을 지정해준다.
-        var adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data)
-        // activity_main에서 만들어 놓은 spinner에 adapter를 연결해준다.
+        binding.spinner.onItemSelectedListener=object:AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
 
-        var spinner: Spinner = findViewById(R.id.spinner)
-        spinner.adapter
-        // 데이터가 들어가 있는 spinner에서 선택한 아이템을 가져온다.
 
-        spinner.onItemSelectedListener = object:AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                // position은 선택한 아이템의 위치를 넘겨주는 인자다
 
-                var result: TextView = findViewById(R.id.result)
 
-                result.text = data.get(position)
+                if(p2 != 0) Toast.makeText(this@MainActivity, itemList[p2], Toast.LENGTH_SHORT).show()
+                if(p2 == 2) {
+                    binding.textViewId.setVisibility(View.VISIBLE)
+                } else {
+                    binding.textViewId.setVisibility(View.INVISIBLE)
+                }
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
-
+                TODO("Not yet implemented")
             }
         }
+
 
     }
 
